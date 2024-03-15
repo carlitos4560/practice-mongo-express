@@ -1,0 +1,4 @@
+dataMongo/
+db-data/
+node_modules/
+.env

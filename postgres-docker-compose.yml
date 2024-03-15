@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports: 
+      - 5433:5433
+    environment:
+      - DATABASE_HOTS=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+  nodejs:
+    build: .
+    depends_on: 
+      - postgres
+    ports:
+      - "6000:4000"
+    volumes:
+      - ./:/usr/src/app
+      
